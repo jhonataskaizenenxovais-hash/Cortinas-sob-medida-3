@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cortina Sob Medida Online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cortinas sob medida para sua janela, com orçamento rápido pelo WhatsApp.">
+  <style>
+    :root {
+      --bg: #f6f6f6;
+      --card: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --accent: #25D366;
+      --accent-soft: #c2a97a;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .page { min-height: 100vh; background-color: var(--bg); }
+    .wrap { max-width: 480px; margin: 0 auto; padding: 16px 14px 80px; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0 10px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo span { color: var(--accent-soft); }
+
+    .header-cta {
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background-color: #fff;
+    }
+
+    .hero {
+      background-color: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 16px 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+      margin-top: 6px;
+    }
+
+    .hero-kicker {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-soft);
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span { color: var(--accent-soft); }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+
+    .btn span { margin-right: 8px; font-size: 1.1rem; }
+
+    .btn-secondary {
+      margin-top: 12px;
+      background-color: #111111;
+      box-shadow: none;
+    }
+
+    .hero-meta {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background-color: #f1f1f1;
+      color: var(--muted);
+    }
+
+    .block {
+      margin-top: 18px;
+      background-color: var(--card);
+      border-radius: var(--radius);
+      padding: 14px 14px 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    }
+
+    .block-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .block-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .benefit-emoji { font-size: 1.2rem; margin-top: 1px; }
+
+    .benefit-text { font-size: 0.86rem; }
+
+    .benefit-text strong {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 1px;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .step { display: flex; gap: 8px; }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background-color: var(--accent-soft);
+      color: #ffffff;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-body { font-size: 0.86rem; }
+
+    .step-body strong {
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .faq-item {
+      border-radius: 10px;
+      padding: 8px 9px;
+      background-color: #f5f5f5;
+    }
+
+    .faq-q {
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .faq-a {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .testimonial {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .testimonial strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .final { text-align: center; }
+
+    .final p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 10px 0 16px;
+    }
+
+    @media (min-width: 768px) {
+      .wrap { margin-top: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="wrap">
+      <header>
+        <div class="logo">CORTINA<span>EXATA</span></div>
+        <a href="https://wa.me/5516997426332?text=Quero%20fazer%20um%20or%C3%A7amento%20de%20cortina%20sob%20medida"
+           class="header-cta"
+           target="_blank"
+           rel="noopener noreferrer">
+          WhatsApp
+        </a>
+      </header>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-kicker">Cortina sob medida online</div>
+        <h1 class="hero-title">
+          Cortina sob medida para sua janela,
+          <span>sem preço de loja de decoração.</span>
+        </h1>
+        <p class="hero-sub">
+          Você mede, a gente produz na medida exata, com qualidade premium e preço acessível.
+          Orçamento rápido pelo WhatsApp e produção em até 5 dias úteis.
+        </p>
+        <a href="https://wa.me/5516997426332?text=Quero%20meu%20or%C3%A7amento%20sob%20medida"
+           class="btn"
+           target="_blank"
+           rel="noopener noreferrer">
+          <span>💬</span> Quero meu orçamento agora no WhatsApp
+        </a>
+        <p class="hero-meta">
+          Atendimento rápido · Produção própria · Enviamos para todo o Brasil
+        </p>
+        <div class="tag-row">
+          <div class="tag">Medida perfeita para sua janela</div>
+          <div class="tag">Até 60% mais barato que sob medida tradicional</div>
+        </div>
+      </section>
+
+      <!-- BENEFÍCIOS -->
+      <section class="block">
+        <h2 class="block-title">Por que não vale mais a pena comprar cortina pronta?</h2>
+        <p class="block-sub">
+          Cada janela é de um jeito. Quando você força uma cortina pronta, quase sempre fica sobrando ou faltando.
+        </p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-emoji">📏</div>
+            <div class="benefit-text">
+              <strong>Medida perfeita</strong>
+              Feita a partir das medidas da sua janela. Nada de tecido arrastando no chão ou curto demais.
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-emoji">💰</div>
+            <div class="benefit-text">
+              <strong>Preço justo</strong>
+              Qualidade de alto padrão, mas até 60% mais barato que lojas de decoração tradicionais.
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-emoji">⏱</div>
+            <div class="benefit-text">
+              <strong>Produção rápida</strong>
+              Produção em até 5 dias úteis após confirmação do pagamento, com envio para todo o Brasil.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMO FUNCIONA -->
+      <section class="block">
+        <h2 class="block-title">Como funciona na prática?</h2>
+        <p class="block-sub">
+          Em poucos passos você recebe uma cortina feita para a sua janela, sem sair do WhatsApp.
+        </p>
+        <div class="steps-list">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+              <strong>Você mede a janela</strong>
+              Meça a largura do vão e a altura. Se tiver dúvida, te mandamos um guia simples de medição pelo WhatsApp.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+              <strong>Envia as medidas no WhatsApp</strong>
+              Clique no botão, fale com nossa equipe e envie largura, altura e uma foto do ambiente (se quiser).
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+              <strong>Recebe 3 opções de orçamento</strong>
+              Sugerimos os melhores tecidos, cores e acabamentos para o seu caso, em três faixas de preço.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-body">
+              <strong>Produção sob medida</strong>
+              Depois de aprovado e pago, produzimos sua cortina na medida exata e enviamos para o seu endereço.
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/5516997426332?text=Quero%20enviar%20as%20medidas%20da%20minha%20janela"
+           class="btn btn-secondary"
+           target="_blank"
+           rel="noopener noreferrer">
+          <span>📐</span> Enviar minhas medidas no WhatsApp
+        </a>
+      </section>
+
+      <!-- DEPOIMENTOS -->
+      <section class="block">
+        <h2 class="block-title">Quem já comprou recomenda</h2>
+        <p class="block-sub">
+          Alguns relatos de clientes que pararam de lutar com cortina pronta e fizeram sob medida.
+        </p>
+
+        <div class="testimonial">
+          <strong>“Ficou exatamente do jeito que eu queria.”</strong>
+          “Sempre comprava cortina pronta e ou sobrava, ou faltava tecido.
+          Com a cortina sob medida, encaixou certinho na janela da sala.”
+          <br>— Ana Paula · São Paulo/SP
+        </div>
+
+        <div class="testimonial">
+          <strong>“Atendimento todo pelo Whats e material top.”</strong>
+          “Fiz tudo pelo WhatsApp. Atendimento rápido e o tecido é muito bom.
+          Ficou igual às cortinas das lojas caras da cidade.”
+          <br>— Rodrigo · Curitiba/PR
+        </div>
+
+        <div class="testimonial">
+          <strong>“Guia de medição salvou minha vida.”</strong>
+          “Tinha medo de errar a medida, mas eles mandaram um passo a passo.
+          Ficou perfeito no quarto da minha filha.”
+          <br>— Juliana · Recife/PE
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="block">
+        <h2 class="block-title">Dúvidas frequentes</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">E se eu errar a medida?</div>
+            <div class="faq-a">
+              Ajudamos você a medir com um guia ilustrado. Se ainda assim ficar um pouco diferente,
+              oferecemos serviço de ajuste de altura com custo fixo e retorno rápido.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Qual o prazo de produção?</div>
+            <div class="faq-a">
+              Até 5 dias úteis após confirmação do pagamento, mais o tempo de transporte dos Correios ou transportadora.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Vocês entregam em todo o Brasil?</div>
+            <div class="faq-a">
+              Sim. Enviamos para todas as regiões do Brasil, com código de rastreio e embalagem protegida.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Como o preço é mais acessível?</div>
+            <div class="faq-a">
+              O atendimento é 100% online e você fala direto com quem produz. Sem showroom caro, sem comissão de decorador.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Quais tecidos vocês usam?</div>
+            <div class="faq-a">
+              Trabalhamos com voil, semi-blackout e blackout premium. No WhatsApp mostramos opções de cores para o seu ambiente.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALL FINAL -->
+      <section class="block final">
+        <h2 class="block-title">Sua janela não é padrão. Sua cortina também não deveria ser.</h2>
+        <p>
+          Tenha uma cortina sob medida, com acabamento premium e preço acessível, feita especialmente para a sua casa —
+          sem sair do WhatsApp.
+        </p>
+        <a href="https://wa.me/5516997426332?text=Quero%20um%20or%C3%A7amento%20de%20cortina%20sob%20medida"
+           class="btn"
+           style="margin-top:12px;"
+           target="_blank"
+           rel="noopener noreferrer">
+          <span>💬</span> Falar com especialista no WhatsApp
+        </a>
+      </section>
+
+      <footer>
+        &copy; <span id="ano-atual"></span> CortinaExata · Cortinas sob medida · Todos os direitos reservados.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("ano-atual").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
